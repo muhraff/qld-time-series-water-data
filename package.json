@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "JavaScript example starter project",
   "main": "index.html",
+  "homepage": "https://muhraff.github.io/qld-time-series-water-data/",
   "scripts": {
     "start": "parcel index.html --open",
     "build": "parcel build index.html"
