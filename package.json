@@ -1,0 +1,26 @@
+{
+  "name": "water-monitoring",
+  "version": "1.0.0",
+  "description": "JavaScript example starter project",
+  "main": "index.html",
+  "scripts": {
+    "start": "parcel index.html --open",
+    "build": "parcel build index.html"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "bootstrap": "^4.5.0",
+    "pretty-print-json": "^0.2.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-0",
+    "@babel/plugin-transform-runtime": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "parcel-bundler": "^1.6.1",
+    "sass": "^1.26.8"
+  },
+  "keywords": [
+    "javascript",
+    "starter"
+  ]
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- <script src="./index.js"></script> -->
+    <style>
+        /* * {
+            margin: 0;
+            padding: 0;
+        }
+
+        pre {
+            max-height: 200px;
+            border: 1px solid #ccc;
+            overflow: scroll;
+            white-space: break-spaces;
+            margin-bottom: 20px;
+        }
+
+        #siteIdInput {
+            width: 400px;
+            font-size: 20px;
+            line-height: 28px;
+            padding: 5px;
+        }
+
+        .header {
+            padding: 10px;
+        }
+
+        button {
+            font-size: 16px;
+            padding: 10px;
+        } */
+    </style>
+    <!-- Bootstrap CSS -->
+
+    <link rel=stylesheet href=https://cdn.jsdelivr.net/npm/pretty-print-json@0.2/dist/pretty-print-json.css>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="my-4">Water sensors Data</h1>
+        <div class="header py-2 border-bottom mb-4">
+
+            <form class="form-inline w-100">
+                <label for="siteIdInput ">Enter Site ID</label>
+                <div class="form-group mb-2 mx-3">
+
+                    <input type="text" class="form-control border w-100" id="siteIdInput">
+                </div>
+                <button type="button" id="actionButton" class="btn btn-primary mb-2">Get data</button>
+            </form>
+        </div>
+
+        <h4>Water sensors data by Site ID</h4>
+        <p>Results are ordered <code>[datesource = AT,  datasource =A, datasource = ATQ]</code></p>
+        <div class="row">
+            <div class="col-6">
+
+                <h4>Water data </h4>
+                <pre id="dataResponce" class="overflow-auto bg-white p-4"></pre>
+            </div>
+            <div class="col-6">
+                <h4>Grouped Latest Variables By Varible</h4>
+                <pre id="groupedLatestVariablesByVarible" class="overflow-auto bg-white p-4"></pre>
+            </div>
+            <div class="col-12">
+                <h4>Latest Water data Query ????</h4>
+                <pre id="latestVariable" class="overflow-auto bg-white p-4"></pre>
+            </div>
+            <div class="col-12">
+                <h4>Latest Water Data</h4>
+                <pre id="apiGetLatestWaterData" class="overflow-auto bg-white p-4"></pre>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="./js/app.js"></script>
+</body>
+
+</html>
