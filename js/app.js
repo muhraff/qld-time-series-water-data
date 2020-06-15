@@ -6,6 +6,7 @@ const BASE_URL =
   'https://water-monitoring.information.qld.gov.au/cgi/webservice.pl?';
 
 const prettyPrintJson = require('pretty-print-json');
+const LOADING = 'Loading ...';
 
 const actionButtonElm = document.getElementById('actionButton');
 
@@ -165,6 +166,9 @@ const apiGetWaterDataQueryUrl = (siteID) =>
 
 const apiGetWaterData = async (siteID) => {
   console.log('apiGetWaterDataQueryUrl  ', apiGetWaterDataQueryUrl(siteID));
+  dataResponceElm.innerHTML = LOADING;
+  groupedLatestVariablesByVaribleElm.innerHTML = LOADING;
+  latestVariableElm.innerHTML = LOADING;
   try {
     const response = await axios.get(apiGetWaterDataQueryUrl(siteID));
     console.log(response);
@@ -178,6 +182,7 @@ const apiGetWaterData = async (siteID) => {
 
 const apiGetLatestWaterData = async (latestQuery) => {
   console.log('latestQuery', latestQuery);
+  apiGetLatestWaterDataElm.innerHTML = LOADING;
   try {
     const response = await axios.get(latestQuery);
     // console.log('apiGetLatestWaterDataresponse', apiGetLatestWaterData);

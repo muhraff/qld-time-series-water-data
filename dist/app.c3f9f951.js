@@ -2806,6 +2806,7 @@ var BASE_URL = 'https://water-monitoring.information.qld.gov.au/cgi/webservice.p
 
 var prettyPrintJson = require('pretty-print-json');
 
+var LOADING = 'Loading ...';
 var actionButtonElm = document.getElementById('actionButton');
 var siteIdInputElm = document.getElementById('siteIdInput');
 var latestVariableElm = document.getElementById('latestVariable');
@@ -2957,29 +2958,32 @@ var apiGetWaterData = /*#__PURE__*/function () {
         switch (_context.prev = _context.next) {
           case 0:
             console.log('apiGetWaterDataQueryUrl  ', apiGetWaterDataQueryUrl(siteID));
-            _context.prev = 1;
-            _context.next = 4;
+            dataResponceElm.innerHTML = LOADING;
+            groupedLatestVariablesByVaribleElm.innerHTML = LOADING;
+            latestVariableElm.innerHTML = LOADING;
+            _context.prev = 4;
+            _context.next = 7;
             return _axios.default.get(apiGetWaterDataQueryUrl(siteID));
 
-          case 4:
+          case 7:
             response = _context.sent;
             console.log(response);
             dataResponceElm.innerHTML = prettyPrintJson.toHtml(response.data);
             getAvailableData(response.data);
-            _context.next = 13;
+            _context.next = 16;
             break;
 
-          case 10:
-            _context.prev = 10;
-            _context.t0 = _context["catch"](1);
+          case 13:
+            _context.prev = 13;
+            _context.t0 = _context["catch"](4);
             console.error(_context.t0);
 
-          case 13:
+          case 16:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[1, 10]]);
+    }, _callee, null, [[4, 13]]);
   }));
 
   return function apiGetWaterData(_x) {
@@ -2995,28 +2999,29 @@ var apiGetLatestWaterData = /*#__PURE__*/function () {
         switch (_context2.prev = _context2.next) {
           case 0:
             console.log('latestQuery', latestQuery);
-            _context2.prev = 1;
-            _context2.next = 4;
+            apiGetLatestWaterDataElm.innerHTML = LOADING;
+            _context2.prev = 2;
+            _context2.next = 5;
             return _axios.default.get(latestQuery);
 
-          case 4:
+          case 5:
             response = _context2.sent;
             // console.log('apiGetLatestWaterDataresponse', apiGetLatestWaterData);
             apiGetLatestWaterDataElm.innerHTML = prettyPrintJson.toHtml(response.data);
-            _context2.next = 11;
+            _context2.next = 12;
             break;
 
-          case 8:
-            _context2.prev = 8;
-            _context2.t0 = _context2["catch"](1);
+          case 9:
+            _context2.prev = 9;
+            _context2.t0 = _context2["catch"](2);
             console.error(_context2.t0);
 
-          case 11:
+          case 12:
           case "end":
             return _context2.stop();
         }
       }
-    }, _callee2, null, [[1, 8]]);
+    }, _callee2, null, [[2, 9]]);
   }));
 
   return function apiGetLatestWaterData(_x2) {
@@ -3056,7 +3061,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61405" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63760" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

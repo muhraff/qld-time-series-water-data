@@ -61,7 +61,7 @@ body {
   line-height: 1.5;
   color: #111;
   text-align: left;
-  background-color: #e8e8e8;
+  background-color: #f7f7f7;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -472,7 +472,7 @@ mark,
 
 .img-thumbnail {
   padding: 0.25rem;
-  background-color: #e8e8e8;
+  background-color: #f7f7f7;
   border: 1px solid #dee2e6;
   border-radius: 0.25rem;
   max-width: 100%;
@@ -3725,13 +3725,13 @@ input[type=button].btn-block {
   outline: none;
 }
 .custom-range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 1px #e8e8e8, 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  box-shadow: 0 0 0 1px #f7f7f7, 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 .custom-range:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 1px #e8e8e8, 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  box-shadow: 0 0 0 1px #f7f7f7, 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 .custom-range:focus::-ms-thumb {
-  box-shadow: 0 0 0 1px #e8e8e8, 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  box-shadow: 0 0 0 1px #f7f7f7, 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 .custom-range::-moz-focus-outer {
   border: 0;
@@ -3899,8 +3899,8 @@ input[type=button].btn-block {
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   color: #495057;
-  background-color: #e8e8e8;
-  border-color: #dee2e6 #dee2e6 #e8e8e8;
+  background-color: #f7f7f7;
+  border-color: #dee2e6 #dee2e6 #f7f7f7;
 }
 .nav-tabs .dropdown-menu {
   margin-top: -1px;
@@ -9909,8 +9909,14 @@ h3 {
     border-color: #dee2e6;
   }
 }
-#dataResponce, #groupedLatestVariablesByVarible, #apiGetLatestWaterData {
+#dataResponce,
+#groupedLatestVariablesByVarible,
+#apiGetLatestWaterData {
   max-height: 300px;
+}
+
+pre {
+  background-color: #ececec;
 }
 
 /*# sourceMappingURL=/app.c3f9f951.css.map */
