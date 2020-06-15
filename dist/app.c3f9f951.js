@@ -2818,7 +2818,7 @@ var getAvailableData = function getAvailableData(responseData) {
   var groupedVaribles = groupVaribles(responseData);
   var groupedLatestVariablesByVarible = groupLatestVariablesByVarible(variables, groupedVaribles);
   groupedLatestVariablesByVaribleElm.innerHTML = prettyPrintJson.toHtml(groupedLatestVariablesByVarible);
-  var apiGetLatestWaterDataQueryUrl = BASE_URL + JSON.stringify(apiGetLatestWaterDataQuery(groupedLatestVariablesByVarible)).replace(/[\[\]']+/g, '');
+  var apiGetLatestWaterDataQueryUrl = BASE_URL + JSON.stringify(apiGetLatestWaterDataQuery(groupedLatestVariablesByVarible));
   latestVariableElm.innerHTML = prettyPrintJson.toHtml(apiGetLatestWaterDataQueryUrl);
   apiGetLatestWaterData(apiGetLatestWaterDataQueryUrl);
   /* const timeoutGroupedLatestVariablesByVarible = setTimeout(() => {
@@ -2889,23 +2889,29 @@ var nowDate = new Date(); // YYYYMMDDhhmmss
 var formatedNowDate = nowDate.toISOString().slice(0, 10).replace(/-/g, '') + nowDate.toTimeString().slice(0, 8).replace(/:/g, '');
 
 var apiGetLatestWaterDataQuery = function apiGetLatestWaterDataQuery(latestVaribles) {
-  return latestVaribles.map(function (item) {
-    return {
-      function: 'get_ts_traces',
-      version: 2,
-      params: {
-        start_time: item.latastPeriodEndDate,
-        end_time: formatedNowDate,
-        site_list: item.site_id,
-        var_list: item.value,
-        datasource: item.datasource,
-        interval: 'day',
-        multiplier: 1,
-        data_type: 'point',
-        rel_times: 0
-      }
-    };
-  });
+  return {
+    function: 'multi_call',
+    version: 1,
+    params: {
+      function_list: latestVaribles.map(function (item) {
+        return {
+          function: 'get_ts_traces',
+          version: 2,
+          params: {
+            start_time: item.latastPeriodEndDate,
+            end_time: formatedNowDate,
+            site_list: item.site_id,
+            var_list: item.value,
+            datasource: item.datasource,
+            interval: 'day',
+            multiplier: 1,
+            data_type: 'point',
+            rel_times: 0
+          }
+        };
+      })
+    }
+  };
 };
 
 var firstQuery = function firstQuery(siteID) {
@@ -2995,22 +3001,22 @@ var apiGetLatestWaterData = /*#__PURE__*/function () {
 
           case 4:
             response = _context2.sent;
-            console.log('apiGetLatestWaterDataresponse', apiGetLatestWaterData);
+            // console.log('apiGetLatestWaterDataresponse', apiGetLatestWaterData);
             apiGetLatestWaterDataElm.innerHTML = prettyPrintJson.toHtml(response.data);
-            _context2.next = 12;
+            _context2.next = 11;
             break;
 
-          case 9:
-            _context2.prev = 9;
+          case 8:
+            _context2.prev = 8;
             _context2.t0 = _context2["catch"](1);
             console.error(_context2.t0);
 
-          case 12:
+          case 11:
           case "end":
             return _context2.stop();
         }
       }
-    }, _callee2, null, [[1, 9]]);
+    }, _callee2, null, [[1, 8]]);
   }));
 
   return function apiGetLatestWaterData(_x2) {
@@ -3050,7 +3056,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51052" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61405" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

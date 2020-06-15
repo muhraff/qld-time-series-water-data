@@ -34,9 +34,7 @@ const getAvailableData = (responseData) => {
 
   const apiGetLatestWaterDataQueryUrl =
     BASE_URL +
-    JSON.stringify(
-      apiGetLatestWaterDataQuery(groupedLatestVariablesByVarible)
-    ).replace(/[\[\]']+/g, '');
+    JSON.stringify(apiGetLatestWaterDataQuery(groupedLatestVariablesByVarible));
 
   latestVariableElm.innerHTML = prettyPrintJson.toHtml(
     apiGetLatestWaterDataQueryUrl
@@ -114,22 +112,29 @@ const formatedNowDate =
   nowDate.toISOString().slice(0, 10).replace(/-/g, '') +
   nowDate.toTimeString().slice(0, 8).replace(/:/g, '');
 
-const apiGetLatestWaterDataQuery = (latestVaribles) =>
-  latestVaribles.map((item) => ({
-    function: 'get_ts_traces',
-    version: 2,
+const apiGetLatestWaterDataQuery = (latestVaribles) => {
+  return {
+    function: 'multi_call',
+    version: 1,
     params: {
-      start_time: item.latastPeriodEndDate,
-      end_time: formatedNowDate,
-      site_list: item.site_id,
-      var_list: item.value,
-      datasource: item.datasource,
-      interval: 'day',
-      multiplier: 1,
-      data_type: 'point',
-      rel_times: 0,
+      function_list: latestVaribles.map((item) => ({
+        function: 'get_ts_traces',
+        version: 2,
+        params: {
+          start_time: item.latastPeriodEndDate,
+          end_time: formatedNowDate,
+          site_list: item.site_id,
+          var_list: item.value,
+          datasource: item.datasource,
+          interval: 'day',
+          multiplier: 1,
+          data_type: 'point',
+          rel_times: 0,
+        },
+      })),
     },
-  }));
+  };
+};
 
 const firstQuery = (siteID) => ({
   function: 'multi_call',
@@ -175,7 +180,7 @@ const apiGetLatestWaterData = async (latestQuery) => {
   console.log('latestQuery', latestQuery);
   try {
     const response = await axios.get(latestQuery);
-    console.log('apiGetLatestWaterDataresponse', apiGetLatestWaterData);
+    // console.log('apiGetLatestWaterDataresponse', apiGetLatestWaterData);
     apiGetLatestWaterDataElm.innerHTML = prettyPrintJson.toHtml(response.data);
   } catch (error) {
     console.error(error);
