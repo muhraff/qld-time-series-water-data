@@ -9910,8 +9910,7 @@ h3 {
   }
 }
 #dataResponce,
-#groupedLatestVariablesByVarible,
-#apiGetLatestWaterData {
+#groupedLatestVariablesByVarible {
   max-height: 300px;
 }
 
