@@ -4,14 +4,10 @@ import axios from 'axios';
 
 const BASE_URL =
   'https://water-monitoring.information.qld.gov.au/cgi/webservice.pl?';
-
 const prettyPrintJson = require('pretty-print-json');
 const LOADING = 'Loading ...';
-
 const actionButtonElm = document.getElementById('actionButton');
-
 const siteIdInputElm = document.getElementById('siteIdInput');
-
 const latestVariableElm = document.getElementById('latestVariable');
 const dataResponceElm = document.getElementById('dataResponce');
 const apiGetLatestWaterDataElm = document.getElementById(
